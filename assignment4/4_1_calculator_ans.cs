@@ -50,6 +50,53 @@ namespace calculator
     public class Calculator
     {
         // ---------- TODO ----------
+        double square(double num1,double num2){
+            if (num2==0) return 1;
+            else if (num2<0) return (1/num1)*square(num1,num2+1);
+            else return num1 * square(num1,num2-1);
+        }
+        double G(double num1,double num2){
+            double r = 0;
+            if (num2>num1) {
+                r= num2;
+                num2 =num1;
+                num1 = r;
+            }
+            if (num2 ==0) return num1;
+            else return G(num2,num1%num2);
+        
+        }
+        public double Calculate(double num1, string op, double num2){
+            switch(op){
+                case "-":
+                    return num1 - num2;
+                    break;
+                case "/":
+                    return num1 / num2;
+                    break;
+                case "+":
+                    return num1 + num2;
+                    break;
+                case "*":
+                    return num1 * num2;
+                    break;
+                case "**":
+                    return square(num1,num2);
+                    break;
+                case "G":
+                    return G(num1,num2);
+                    break;
+                case "L":
+                    return num1 * num2 / G(num1,num2);
+                    break;
+                case "%":
+                    return num1 % num2;
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
+        }
         
         // --------------------
     }
