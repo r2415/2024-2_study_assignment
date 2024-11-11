@@ -20,7 +20,69 @@ namespace statistics
 
             int stdCount = data.GetLength(0) - 1;
             // ---------- TODO ----------
-            
+            Console.WriteLine("Average Scores:");
+            for(int i =2;i<5;i++){
+                double sum = 0;
+                for(int j =1;j<6;j++){
+                    sum += double.Parse((data[j,i]));
+                }
+                Console.Write(data[0,i]+':'+' '+sum / 5);
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Max and min Scores:");
+            for(int i =2;i<5;i++){
+                double max = double.Parse(data[2,2]);
+                double min = double.Parse(data[2,2]);
+                for(int j = 1;j<6;j++){
+                    if (double.Parse((data[j,i]))>max) {max = double.Parse((data[j,i]));}
+                    if (double.Parse((data[j,i]))<min) {min = double.Parse((data[j,i]));}
+                }
+                Console.Write(data[0,i]+':'+' '+'('+max+","+min+')');
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Students rank by total scores:");
+            double[] array = new double[5];
+            for(int i =1;i<6;i++){
+                double sum = 0;
+                for(int j =2;j<5;j++){
+                    sum += double.Parse(data[i,j]);
+                }
+                array[i-1] = sum;
+                
+                
+            }
+            Array.Sort(array);
+            Array.Reverse(array);
+            for(int i =1;i<6;i++){
+                double sum = 0;
+                for(int j =2;j<5;j++){
+                    sum += double.Parse(data[i,j]);
+                }
+                for(int k = 0;k<5;k++){
+                    if (array[k] == sum){
+                        if (k==0) {
+                            Console.WriteLine(data[i,1]+": 1st");
+                        }
+                        else if (k==1) {
+                            Console.WriteLine(data[i,1]+": 2nd");
+                        }
+                        else if (k==2) {
+                            Console.WriteLine(data[i,1]+": 3rd");
+                        }
+                        else if (k==3) {
+                            Console.WriteLine(data[i,1]+": 4th");
+                        }
+                        else if (k==4) {
+                            Console.WriteLine(data[i,1]+": 5th");
+                        }
+                        
+                    }
+                }
+                
+                
+            }
             // --------------------
         }
     }
